@@ -11,6 +11,8 @@ class Barang extends Model
 
     public function Tipe()
     {
-        return $this-> belongsTo(Tipe::class);
+        return $this->belongsTo(Tipe::class, 'id_tipe');
     }
+
+    protected $fillable = ['nama_produk', 'jumlah_produk', 'harga_produk', 'id_tipe',];
 }

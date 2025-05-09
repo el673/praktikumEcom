@@ -34,11 +34,11 @@ Route::get('/keranjang', [KeranjangController::class, 'index']);
 
 Route::get('/checkout', [CheckOutController::class, 'index']);
 
-Route::get('/barang', function() {
+Route::get('/barang', function () {
     return view('barang');
 });
 
-Route::get('/tipe', function() {
+Route::get('/tipe', function () {
     return view('tipe');
 });
 
@@ -47,3 +47,5 @@ Route::get('/tipe', [TipeController::class, 'index']);
 Route::get('/barang', [BarangController::class, 'index']);
 
 Route::get('/barang/create', [BarangController::class, 'create']);
+
+Route::post('/barang', [BarangController::class, 'store']);

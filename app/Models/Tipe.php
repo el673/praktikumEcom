@@ -11,6 +11,6 @@ class Tipe extends Model
 
     public function Barang()
     {
-        return $this-> hasMany(Barang::class);
+        return $this->hasMany(Barang::class);
     }
 }

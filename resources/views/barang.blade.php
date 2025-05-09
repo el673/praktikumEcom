@@ -1,16 +1,23 @@
 @extends('layout.app')
 
 @section('content')
-<center><h1 class="mb-5">Table Barang</h1></center>
-<a herf="" class="btn btn-primary mb-2">+Tambah Data</a>
+<center>
+    <h1 class="mb-5">Table Barang</h1>
+</center>
+@if (session()->has('success'))
+<div class="alert alert-success">
+    {{session('success')}}
+</div>
+@endif
+<a href="barang/create" class="btn btn-primary mb-2">+Tambah Data</a>
 <table class="table table-dark table-striped">
     <thead>
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Nama Produk</th>
-            <th scope="col">Tipe Produk</th>
             <th scope="col">Jumlah Produk</th>
             <th scope="col">Harga Produk</th>
+            <th scope="col">Tipe Produk</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -19,14 +26,13 @@
         <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{ $barang->nama_produk }}</td>
-            <td>{{ $barang->tipe_produk }}</td>
             <td>{{ $barang->jumlah_produk }}</td>
             <td>{{ $barang->harga_produk }}</td>
             <td>{{ optional($barang->tipe)->nama }}</td>
             <td>
                 <a href="" class="btn btn-warning">Edit</a>
                 <form action="" class="d-inline">
-                    <button type="sumbit" class= "btn btn-danger">Hapus</button>
+                    <button type="sumbit" class="btn btn-danger">Hapus</button>
                 </form>
             </td>
         </tr>
