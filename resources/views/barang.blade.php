@@ -30,9 +30,11 @@
             <td>{{ $barang->harga_produk }}</td>
             <td>{{ optional($barang->tipe)->nama }}</td>
             <td>
-                <a href="" class="btn btn-warning">Edit</a>
-                <form action="" class="d-inline">
-                    <button type="sumbit" class="btn btn-danger">Hapus</button>
+                <a href="/barang/{{$barang->id}}/edit" class="btn btn-warning">Edit</a>
+                <form action="/barang/{{$barang->id}}" method="post" class="d-inline">
+                    @method('DELETE')
+                    @csrf
+                    <button type="sumbit" class="btn btn-danger" onclick="return confirm('Yakin Ingin Menghapus Data?')">Hapus</button>
                 </form>
             </td>
         </tr>
