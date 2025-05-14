@@ -13,7 +13,9 @@ class BarangController extends Controller
      */
     public function index()
     {
-        return Barang::with('Tipe')->get();
+        return response()->json(
+            Barang::with('Tipe')->get()
+        );
     }
 
     /**
@@ -34,7 +36,7 @@ class BarangController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $barang = Barang::with('Tipe')->findOrFail($id);
         return response()->json($barang);
@@ -43,9 +45,17 @@ class BarangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $barang = Barang::findOrFail($id);
+
+        $request->validate([
+            'nama_produk' => 'sometimes|required|string',
+            'jumlah_produk' => 'sometimes|required|integer',
+            'harga_produk' => 'sometimes|required|numeric',
+            'id_tipe' => 'sometimes|required|exists:tipes,id',
+        ]);
+
         $barang->update($request->all());
         return response()->json($barang);
     }

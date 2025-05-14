@@ -55,3 +55,8 @@ Route::get('/barang/{id}/edit', [BarangController::class, 'edit']);
 Route::put('/barang/{id}', [BarangController::class, 'update']);
 
 Route::delete('/barang/{id}', [BarangController::class, 'destroy']);
+
+
+Route::get('/barangapi', function () {
+    return view('barangapi');
+});
